@@ -5,7 +5,7 @@ interface IAppProps {}
 const App: React.FC<IAppProps> = () => {
   return (
     <div>
-      <h1>Hello world!</h1>
+      <h1>Настя ты все можешь!</h1>
     </div>
   );
 };

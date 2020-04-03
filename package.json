@@ -7,7 +7,8 @@
     "bundle": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production",
+    "build": "webpack --mode production --watch",
+    "dev": "concurrently \"npm run build\" \"npm run start\"",
     "check-types": "tsc"
   },
   "repository": {
@@ -28,6 +29,7 @@
     "@babel/preset-react": "^7.9.4",
     "@babel/preset-typescript": "^7.9.0",
     "babel-loader": "^8.1.0",
+    "concurrently": "^5.1.0",
     "css-loader": "^3.4.2",
     "html-webpack-plugin": "^4.0.4",
     "style-loader": "^1.1.3",
