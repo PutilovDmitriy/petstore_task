@@ -1,18 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 interface Props {}
 
 const Login: React.FunctionComponent<Props> = () => {
+  let history = useHistory();
+
+  const handleSubmit = (event: any) => {
+    history.push("/");
+    console.log("Sended");
+  };
+
   return (
     <div className="forma">
-      <form className="forma">
-        <input type="text" />
-        <input type="password" />
-        <button>Log in</button>
+      <form className="forma" onSubmit={handleSubmit}>
+        <input type="text" placeholder="Логин" />
+        <input type="password" placeholder="Пароль" />
+        <button type="submit">Log in</button>
       </form>
       <Link to="/registr">Зарегистрироваться</Link>
-      <Link to="/">home</Link>
     </div>
   );
 };

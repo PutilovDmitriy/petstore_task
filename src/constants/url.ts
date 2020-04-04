@@ -1,2 +1,1 @@
-export const urlUser = (username?: string) =>
-  "https://petstore.swagger.io/v2/user/" + username;
+export const urlUser = "https://petstore.swagger.io/v2/user/";

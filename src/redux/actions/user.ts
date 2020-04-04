@@ -28,7 +28,7 @@ export const userDelete = (): AppActions => {
 export function getUserInfo(username: string) {
   return (dispatch: Dispatch<AppActions>) => {
     dispatch(userBegin());
-    return fetch(urlUser(username))
+    return fetch(`${urlUser}${username}`)
       .then(
         (response) => response.json(),
         (error) => dispatch(userFailure(error))
@@ -41,9 +41,11 @@ export function getUserInfo(username: string) {
 }
 
 export function addUserInfo(info: UserInfo) {
+  console.log("adduser");
+  console.log(typeof JSON.stringify(info));
   return (dispatch: Dispatch<AppActions>) => {
     dispatch(userBegin());
-    return fetch(urlUser(), {
+    return fetch(`${urlUser}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
@@ -63,7 +65,7 @@ export function addUserInfo(info: UserInfo) {
 export function updateUserInfo(info: UserInfo) {
   return (dispatch: Dispatch<AppActions>) => {
     dispatch(userBegin());
-    return fetch(urlUser(info.username), {
+    return fetch(`${urlUser}${info.username}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
@@ -83,7 +85,7 @@ export function updateUserInfo(info: UserInfo) {
 export function deleteUser(username: string) {
   return (dispatch: Dispatch<AppActions>) => {
     dispatch(userBegin());
-    return fetch(urlUser(username), {
+    return fetch(`${urlUser}${username}`, {
       method: "DELETE",
     })
       .then(

@@ -1,21 +1,20 @@
 import React from "react";
 import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
 import Login from "../components/Login";
-import Registr from "../components/Registr";
 import Home from "../components/Home";
-
+import Register from "../containers/Registr";
 interface RouterProps {}
 
-const Router: React.FC<RouterProps> = (props) => {
+const Router: React.FC<RouterProps> = () => {
   return (
-    <HashRouter basename="/petstore_task">
+    <HashRouter>
       <Switch>
         <Route path="">
           <Route exact path={"/login"}>
             <Login />
           </Route>
           <Route path="/registr">
-            <Registr />
+            <Register />
           </Route>
           <Route path="/">
             {/* {false ? <Home /> : <Redirect to="/login" /> */}
