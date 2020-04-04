@@ -1,9 +1,10 @@
-html,
+html {
+  height: calc(101% - 50px);
+}
 body,
 #root {
   height: 101%;
-}
-body {
+  font-family: "Ubuntu", sans-serif;
 }
 a {
   color: #000;

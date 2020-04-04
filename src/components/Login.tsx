@@ -14,7 +14,7 @@ const Login: React.FunctionComponent<Props> = () => {
   return (
     <div className="forma">
       <form className="forma" onSubmit={handleSubmit}>
-        <input type="text" placeholder="Логин" />
+        <input type="text" placeholder="Логин" autoFocus />
         <input type="password" placeholder="Пароль" />
         <button type="submit">Log in</button>
       </form>
