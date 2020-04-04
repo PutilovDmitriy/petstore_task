@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-  Redirect,
-  useRouteMatch,
-} from "react-router-dom";
+import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
 import Login from "../components/Login";
 import Registr from "../components/Registr";
 import Home from "../components/Home";
@@ -14,7 +8,7 @@ interface RouterProps {}
 
 const Router: React.FC<RouterProps> = (props) => {
   return (
-    <BrowserRouter basename="/petstore_task">
+    <HashRouter basename="/petstore_task">
       <Switch>
         <Route path="">
           <Route exact path={"/login"}>
@@ -29,7 +23,7 @@ const Router: React.FC<RouterProps> = (props) => {
           </Route>
         </Route>
       </Switch>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
