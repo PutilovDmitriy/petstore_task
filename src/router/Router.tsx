@@ -1,5 +1,11 @@
 import React from "react";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Redirect,
+  useRouteMatch,
+} from "react-router-dom";
 import Login from "../components/Login";
 import Registr from "../components/Registr";
 import Home from "../components/Home";
@@ -8,15 +14,15 @@ interface RouterProps {}
 
 const Router: React.FC<RouterProps> = (props) => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/petstore_task">
       <Switch>
-        <Route exact path="/login">
-          {!true ? <Login /> : <Redirect to="/" />}
+        <Route exact path={`/login`}>
+          <Login />
         </Route>
         <Route path="/registr">
           <Registr />
         </Route>
-        <Route path="/">{true ? <Home /> : <Redirect to="/login" />}</Route>
+        <Route path="/">{false ? <Home /> : <Redirect to="/login" />}</Route>
       </Switch>
     </BrowserRouter>
   );
