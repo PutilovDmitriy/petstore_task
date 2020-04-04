@@ -22,7 +22,10 @@ const Router: React.FC<RouterProps> = (props) => {
         <Route path="/registr">
           <Registr />
         </Route>
-        <Route path="/">{false ? <Home /> : <Redirect to="/login" />}</Route>
+        <Route path="/">
+          {/* {false ? <Home /> : <Redirect to="/login" /> */}
+          <Home />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

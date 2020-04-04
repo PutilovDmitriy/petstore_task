@@ -12,7 +12,7 @@ const Login: React.FunctionComponent<Props> = () => {
         <button>Log in</button>
       </form>
       <Link to="/registr">Зарегистрироваться</Link>
-      <Link to="/home/ssss">home</Link>
+      <Link to="/">home</Link>
     </div>
   );
 };
