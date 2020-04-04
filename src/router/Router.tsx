@@ -16,15 +16,17 @@ const Router: React.FC<RouterProps> = (props) => {
   return (
     <BrowserRouter basename="/petstore_task">
       <Switch>
-        <Route exact path={`/login`}>
-          <Login />
-        </Route>
-        <Route path="/registr">
-          <Registr />
-        </Route>
-        <Route path="/">
-          {/* {false ? <Home /> : <Redirect to="/login" /> */}
-          <Home />
+        <Route path="">
+          <Route exact path={"/login"}>
+            <Login />
+          </Route>
+          <Route path="/registr">
+            <Registr />
+          </Route>
+          <Route path="/">
+            {/* {false ? <Home /> : <Redirect to="/login" /> */}
+            <Home />
+          </Route>
         </Route>
       </Switch>
     </BrowserRouter>
