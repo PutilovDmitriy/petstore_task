@@ -34,6 +34,7 @@ export function getUserInfo(username: string) {
         (error) => dispatch(userFailure(error))
       )
       .then((data) => {
+        console.log(data);
         dispatch(userSuccess(data));
         return data;
       });
@@ -41,8 +42,6 @@ export function getUserInfo(username: string) {
 }
 
 export function addUserInfo(info: UserInfo) {
-  console.log("adduser");
-  console.log(typeof JSON.stringify(info));
   return (dispatch: Dispatch<AppActions>) => {
     dispatch(userBegin());
     return fetch(`${urlUser}`, {

@@ -1,17 +1,13 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, FormEvent } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { objUserInfo } from "../constants/creaters";
 import { UserInfo } from "types/User";
 
 interface RegisterProps {
   addUserInfo: (info: UserInfo) => void;
-  userInfo: UserInfo;
 }
 
-const Register: React.FunctionComponent<RegisterProps> = ({
-  addUserInfo,
-  userInfo,
-}) => {
+const Register: React.FunctionComponent<RegisterProps> = ({ addUserInfo }) => {
   const [username, setUsername] = useState("");
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
@@ -19,6 +15,8 @@ const Register: React.FunctionComponent<RegisterProps> = ({
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [isValid, setValid] = useState(false);
+  const history = useHistory();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     switch (event.target.name) {
@@ -48,23 +46,12 @@ const Register: React.FunctionComponent<RegisterProps> = ({
     }
   };
 
-  console.log(userInfo);
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    if (event.currentTarget.checkValidity() === false) {
-      addUserInfo(
-        objUserInfo(
-          0,
-          username,
-          firstName,
-          lastName,
-          email,
-          password1,
-          phone,
-          0
-        )
-      );
-    }
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    addUserInfo(
+      objUserInfo(0, username, firstName, lastName, email, password1, phone, 0)
+    );
+    event.preventDefault();
+    history.push("/login");
   };
 
   return (
@@ -119,7 +106,9 @@ const Register: React.FunctionComponent<RegisterProps> = ({
           onChange={handleChange}
           value={phone}
         ></input>
-        <button type="submit">Регистрация</button>
+        <button type="submit" disabled={!isValid}>
+          Регистрация
+        </button>
       </form>
       <Link to="/login">Войти</Link>
     </div>

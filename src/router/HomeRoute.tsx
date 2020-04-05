@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, useRouteMatch } from "react-router-dom";
+import Profile from "../components/Profile";
 
 interface HomeRouterProps {}
 
@@ -18,7 +19,7 @@ const HomeRouter: React.FC<HomeRouterProps> = (props) => {
         <h1>cart</h1>
       </Route>
       <Route path={`${path}profile`}>
-        <h1>profile</h1>
+        <Profile />
       </Route>
     </>
   );

@@ -1,25 +1,47 @@
 import React from "react";
 import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
 import Login from "../components/Login";
-import Home from "../components/Home";
-import Register from "../containers/Registr";
-interface RouterProps {}
+import Home from "../containers/Home";
+import Register from "../components/Registr";
+import { UserInfo } from "../types/User";
 
-const Router: React.FC<RouterProps> = () => {
+interface RouterProps {
+  userInfo: UserInfo;
+  authorized: boolean;
+  addUserInfo: (info: UserInfo) => void;
+  goAuthorization: (username: string, password: string) => void;
+  getUserInfo: (username: string) => void;
+}
+
+const Router: React.FC<RouterProps> = ({
+  authorized,
+  goAuthorization,
+  userInfo,
+  addUserInfo,
+  getUserInfo,
+}) => {
   return (
     <HashRouter>
       <Switch>
-        <Route path="">
-          <Route exact path={"/login"}>
-            <Login />
-          </Route>
-          <Route path="/registr">
-            <Register />
-          </Route>
-          <Route path="/">
-            {/* {false ? <Home /> : <Redirect to="/login" /> */}
-            <Home />
-          </Route>
+        <Route path="/login">
+          {!authorized ? (
+            <Login
+              goAuthorization={goAuthorization}
+              getUserInfo={getUserInfo}
+            />
+          ) : (
+            <Redirect to="/" />
+          )}
+        </Route>
+        <Route path="/registr">
+          {!authorized ? (
+            <Register addUserInfo={addUserInfo} />
+          ) : (
+            <Redirect to="/" />
+          )}
+        </Route>
+        <Route path="/">
+          {authorized ? <Home /> : <Redirect to="/login" />}
         </Route>
       </Switch>
     </HashRouter>

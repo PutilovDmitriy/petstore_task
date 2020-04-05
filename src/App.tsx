@@ -1,5 +1,5 @@
 import React from "react";
-import Router from "./router/Router";
+import Router from "./containers/Router";
 
 interface IAppProps {}
 

@@ -1,5 +1,6 @@
 import { UserInfo } from "./User";
 import { UserActions } from "./../redux/actions/user";
+import { LoginActions } from "redux/actions/login";
 
 // user action types
 
@@ -27,4 +28,28 @@ export type UserActionsType =
   | UserFailure
   | UserDelete;
 
-export type AppActions = UserActionsType;
+// login actions types
+
+export interface LoginBegin {
+  type: typeof LoginActions.LOGIN_BEGIN;
+}
+
+export interface LoginSuccess {
+  type: typeof LoginActions.LOGIN_SUCCESS;
+}
+export interface UnloginSuccess {
+  type: typeof LoginActions.UNLOGIN_SUCCESS;
+}
+
+export interface LoginFailure {
+  type: typeof LoginActions.LOGIN_FAILURE;
+  error: any;
+}
+
+export type LoginActionsType =
+  | LoginBegin
+  | LoginSuccess
+  | UnloginSuccess
+  | LoginFailure;
+
+export type AppActions = UserActionsType | LoginActionsType;

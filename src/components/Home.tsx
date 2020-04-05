@@ -1,16 +1,24 @@
 import * as React from "react";
 import HomeRouter from "../router/HomeRoute";
 import NavBar from "./NavBar";
+import HomeContext from "../context/HomeContext";
+import { UserInfo } from "../types/User";
 
-interface HomeProps {}
+interface HomeProps {
+  cancelAuthorization: () => void;
+  userInfo: UserInfo;
+}
 
-const Home: React.FunctionComponent<HomeProps> = (props) => {
+const Home: React.FunctionComponent<HomeProps> = ({
+  cancelAuthorization,
+  userInfo,
+}) => {
   return (
     <>
-      <NavBar />
-      <div>
+      <HomeContext.Provider value={{ cancelAuthorization, userInfo }}>
+        <NavBar />
         <HomeRouter />
-      </div>
+      </HomeContext.Provider>
     </>
   );
 };
