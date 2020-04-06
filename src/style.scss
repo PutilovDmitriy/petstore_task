@@ -27,6 +27,39 @@ a:hover {
   justify-content: center;
   align-items: center;
 }
+.passwordForm {
+  width: 260px;
+}
+.validPassword {
+  display: flex;
+  position: relative;
+  left: -5px;
+  flex-direction: row;
+  align-items: center;
+  width: inherit;
+  img {
+    display: none;
+  }
+  h3 {
+    display: none;
+  }
+}
+.invalidPassword {
+  display: flex;
+  position: relative;
+  left: 115px;
+  flex-direction: row;
+  align-items: center;
+  width: 500px;
+  img {
+    margin-left: 20px;
+    width: 40px;
+  }
+  h3 {
+    margin-left: 10px;
+    width: 100px;
+  }
+}
 button {
   padding: 0;
   border: none;
@@ -38,6 +71,9 @@ button {
   outline: none;
   background-color: #cccccc;
   color: white;
+}
+.validButton {
+  background-color: rgb(118, 153, 250); //
 }
 input {
   border: 1px solid #cccccc;

@@ -13,6 +13,7 @@ const Login: React.FunctionComponent<Props> = ({
   const history = useHistory();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isValid, setValid] = useState<false | true>(false);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     switch (event.target.name) {
@@ -32,6 +33,10 @@ const Login: React.FunctionComponent<Props> = ({
     history.push("/");
   };
 
+  const validating = () => {
+    username.trim() && password.trim() ? setValid(true) : setValid(false);
+  };
+
   return (
     <div className="forma">
       <form className="forma" onSubmit={handleSubmit}>
@@ -42,6 +47,7 @@ const Login: React.FunctionComponent<Props> = ({
           name="username"
           onChange={handleChange}
           value={username}
+          onKeyUp={validating}
         />
         <input
           type="password"
@@ -49,8 +55,15 @@ const Login: React.FunctionComponent<Props> = ({
           name="password"
           onChange={handleChange}
           value={password}
+          onKeyUp={validating}
         />
-        <button type="submit">Log in</button>
+        <button
+          type="submit"
+          disabled={!isValid}
+          className={isValid ? "validButton" : ""}
+        >
+          Log in
+        </button>
       </form>
       <Link to="/registr">Зарегистрироваться</Link>
     </div>
