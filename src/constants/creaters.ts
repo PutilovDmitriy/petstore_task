@@ -1,5 +1,7 @@
 import { UserStatus, UserInfo } from "./../types/User";
 
+export const dateFormat = require("dateformat");
+
 export const objUserInfo = (
   id: number,
   username: string,

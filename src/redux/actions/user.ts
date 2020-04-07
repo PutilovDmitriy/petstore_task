@@ -34,7 +34,6 @@ export function getUserInfo(username: string) {
         (error) => dispatch(userFailure(error))
       )
       .then((data) => {
-        console.log(data);
         dispatch(userSuccess(data));
         return data;
       });

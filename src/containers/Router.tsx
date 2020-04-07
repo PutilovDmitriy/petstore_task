@@ -8,7 +8,6 @@ import Router from "../router/Router";
 import { addUserInfo, getUserInfo } from "../redux/actions/user";
 
 const mapStateToProps = (state: AppState) => ({
-  userInfo: state.userReducer.info,
   authorized: state.loginReducer.authorized,
 });
 

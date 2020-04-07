@@ -16,7 +16,6 @@ interface RouterProps {
 const Router: React.FC<RouterProps> = ({
   authorized,
   goAuthorization,
-  userInfo,
   addUserInfo,
   getUserInfo,
 }) => {
@@ -40,9 +39,7 @@ const Router: React.FC<RouterProps> = ({
             <Redirect to="/" />
           )}
         </Route>
-        <Route path="/">
-          {authorized ? <Home /> : <Redirect to="/login" />}
-        </Route>
+        <Route path="/">{true ? <Home /> : <Redirect to="/login" />}</Route>
       </Switch>
     </HashRouter>
   );

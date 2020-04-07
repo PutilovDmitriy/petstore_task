@@ -16,7 +16,6 @@ a:hover {
 
 .generalContaner {
   display: flex;
-  flex: 1;
   min-height: 100%;
   align-items: center;
   justify-content: center;
@@ -89,6 +88,7 @@ input:focus {
 }
 
 nav {
+  z-index: 999999;
   display: flex;
   flex-direction: row;
   position: fixed;
@@ -116,4 +116,82 @@ nav {
   a:hover {
     background-color: #111;
   }
+}
+
+.ordersBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  input {
+    height: 25px;
+  }
+  .search {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.textRow {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin: 5px;
+  h1,
+  h2,
+  h3,
+  h4,
+  p {
+    margin: 0;
+    vertical-align: middle;
+  }
+  p {
+    font-size: 20px;
+    line-height: 25px;
+  }
+}
+
+.petsBlock {
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  width: 80%;
+}
+.pets {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+  width: 80%;
+}
+
+.pet {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-direction: column;
+  max-height: 300px;
+  width: 250px;
+  margin: 20px;
+  border-radius: 10px;
+}
+
+.footerPet {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #4a148c;
+  color: white;
+  padding: 0 5px 0 10px;
+  img {
+    height: 30px;
+  }
+}
+
+.imgPet {
+  width: 100%;
+  height: 250px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }

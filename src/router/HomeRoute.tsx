@@ -1,6 +1,8 @@
 import React from "react";
 import { Route, useRouteMatch } from "react-router-dom";
 import Profile from "../components/Profile";
+import Orders from "../components/Orders";
+import Pets from "../components/Pets";
 
 interface HomeRouterProps {}
 
@@ -10,10 +12,10 @@ const HomeRouter: React.FC<HomeRouterProps> = (props) => {
   return (
     <>
       <Route exact path={`${path}`}>
-        <h1>d</h1>
+        <Pets />
       </Route>
       <Route path={`${path}order`}>
-        <h1>order</h1>
+        <Orders />
       </Route>
       <Route path={`${path}cart`}>
         <h1>cart</h1>
