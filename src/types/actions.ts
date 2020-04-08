@@ -86,7 +86,7 @@ export interface UpdateOrder {
 
 export interface DeleteOrder {
   type: typeof OrderActions.DELETE_ORDER;
-  payload: string;
+  payload: number;
 }
 
 export type OrderActionsType =

@@ -36,12 +36,12 @@ export const updateOrder = (payload: OrderInfo): AppActions => ({
   payload,
 });
 
-export const deleteOrder = (payload: string): AppActions => ({
+export const deleteOrder = (payload: number): AppActions => ({
   type: OrderActions.DELETE_ORDER,
   payload,
 });
 
-export function getOrder(id: string) {
+export function getOrder(id: number) {
   return (dispatch: Dispatch<AppActions>) => {
     dispatch(orderBegin());
     return fetch(`${urlOrder}${id}`)
@@ -110,7 +110,7 @@ export function updateOrderInfo(info: OrderInfo) {
   };
 }
 
-export function deleteOrderInfo(payload: string) {
+export function deleteOrderInfo(payload: number) {
   return (dispatch: Dispatch<AppActions>) => {
     dispatch(orderBegin());
     return fetch(`${urlOrder}${payload}`, {

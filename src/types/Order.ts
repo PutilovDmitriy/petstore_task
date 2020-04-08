@@ -6,9 +6,11 @@ export interface Order {
 
 export interface OrderInfo {
   id: number;
-  perId: number;
+  petId: number;
   quantity: number;
   shipDate: string;
-  status: "placed" | "delivered";
+  status: Status;
   complete: boolean;
 }
+
+export type Status = "placed" | "approved" | "delivered";

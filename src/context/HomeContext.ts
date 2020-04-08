@@ -6,7 +6,7 @@ import { Cart } from "../types/Cart";
 type ContextProps = {
   cancelAuthorization: () => void;
   userInfo: UserInfo;
-  getOrder: (id: string) => void;
+  getOrder: (id: number) => void;
   orderInfo: OrderInfo | null;
   loadingOrder: boolean;
   errorOrder: any;
@@ -14,7 +14,8 @@ type ContextProps = {
   addCart: (payload: Cart) => void;
   removeCart: (payload: number) => void;
   cleanCart: () => void;
-  deleteOrder: (id: string) => void;
+  deleteOrder: (id: number) => void;
+  updateOrder: (info: OrderInfo) => void;
 };
 
 const HomeContext = React.createContext<Partial<ContextProps>>({});

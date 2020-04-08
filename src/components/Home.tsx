@@ -9,7 +9,7 @@ import { Cart } from "types/Cart";
 interface HomeProps {
   cancelAuthorization: () => void;
   userInfo: UserInfo;
-  getOrder: (id: string) => void;
+  getOrder: (id: number) => void;
   orderInfo: OrderInfo | null;
   loadingOrder: boolean;
   errorOrder: any;
@@ -17,7 +17,8 @@ interface HomeProps {
   addCart: (payload: Cart) => void;
   removeCart: (payload: number) => void;
   cleanCart: () => void;
-  deleteOrder: (id: string) => void;
+  deleteOrder: (id: number) => void;
+  updateOrder: (info: OrderInfo) => void;
 }
 
 const Home: React.FC<HomeProps> = ({
@@ -32,6 +33,7 @@ const Home: React.FC<HomeProps> = ({
   removeCart,
   cleanCart,
   deleteOrder,
+  updateOrder,
 }) => {
   return (
     <>
@@ -48,6 +50,7 @@ const Home: React.FC<HomeProps> = ({
           removeCart,
           cleanCart,
           deleteOrder,
+          updateOrder,
         }}
       >
         <NavBar />

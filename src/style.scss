@@ -136,7 +136,7 @@ nav {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-  margin: 5px;
+  margin: 10px 5px 5px 5px;
   h1,
   h2,
   h3,
@@ -148,6 +148,70 @@ nav {
   p {
     font-size: 20px;
     line-height: 25px;
+  }
+}
+
+.inputRow {
+  justify-content: space-between;
+  input {
+    max-width: 245px;
+  }
+}
+
+.radioRow {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.radio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.buttonRow {
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.buttonGroup {
+  justify-content: center;
+  align-items: center;
+  .compliteOrder {
+    margin-right: 10px;
+    background-color: #64dd17;
+  }
+  .uncompliteOrder {
+    margin-left: 10px;
+    background-color: #d50000;
+  }
+}
+
+.buttonSaveEdit {
+  display: flex;
+  width: 100%;
+  margin-top: 20px;
+  justify-content: center;
+  button {
+    width: 100px;
+    height: 35px;
+  }
+  .buttonColor {
+    background-color: #0091ea;
+  }
+}
+
+.buttonSaveAndEdit {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin-top: 20px;
+  .edit {
+    background-color: #0277bd;
+  }
+  .remove {
+    background-color: #e91e63;
   }
 }
 

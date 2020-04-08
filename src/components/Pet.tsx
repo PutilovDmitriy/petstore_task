@@ -14,7 +14,7 @@ const Pet: React.FunctionComponent<IPetProps> = (props) => {
 
   const hendleErrorSrc = () => {
     if (!errored) {
-      setSrc("https://source.unsplash.com/random/900%C3%97700/?animal");
+      setSrc("../../public/imgs/defaultPet.png");
       setErrored(true);
     }
   };
