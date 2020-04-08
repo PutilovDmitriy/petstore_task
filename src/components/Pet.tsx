@@ -12,9 +12,9 @@ const Pet: React.FunctionComponent<IPetProps> = (props) => {
   const downColor = () => setColorIcon("#ff1744");
   const upColor = () => setColorIcon("#ffffff");
 
-  const hendleErrorSrc = () => {
+  const handleErrorSrc = () => {
     if (!errored) {
-      setSrc("../../public/imgs/defaultPet.png");
+      setSrc(require("../../public/imgs/defaultPet.png"));
       setErrored(true);
     }
   };
@@ -31,7 +31,7 @@ const Pet: React.FunctionComponent<IPetProps> = (props) => {
           },
         }}
       >
-        <img src={src} onError={hendleErrorSrc} className="imgPet" />
+        <img src={src} onError={handleErrorSrc} className="imgPet" />
       </Carousel>
       <div className="footerPet">
         <h3>Животное</h3>
