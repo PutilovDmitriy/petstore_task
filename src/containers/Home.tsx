@@ -11,6 +11,7 @@ import {
   updateOrderInfo,
 } from "../redux/actions/order";
 import { addItem, removeItem, cleanCard } from "../redux/actions/cart";
+import { getPetInfo } from "../redux/actions/pet";
 
 const mapStateToProps = (state: AppState) => ({
   userInfo: state.userReducer.info,
@@ -18,6 +19,8 @@ const mapStateToProps = (state: AppState) => ({
   loadingOrder: state.orderReducer.loading,
   errorOrder: state.orderReducer.error,
   cartData: state.cartReducer,
+  petData: state.petReducer.info,
+  loadingPets: state.petReducer.loading,
 });
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AppActions>) => ({
@@ -28,5 +31,6 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AppActions>) => ({
   addCart: bindActionCreators(addItem, dispatch),
   removeCart: bindActionCreators(removeItem, dispatch),
   cleanCart: bindActionCreators(cleanCard, dispatch),
+  getPetInfo: bindActionCreators(getPetInfo, dispatch),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

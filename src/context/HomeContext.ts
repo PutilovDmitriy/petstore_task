@@ -2,6 +2,7 @@ import { UserInfo } from "./../types/User";
 import * as React from "react";
 import { OrderInfo } from "types/Order";
 import { Cart } from "../types/Cart";
+import { PetInfo, Status } from "../types/Pet";
 
 type ContextProps = {
   cancelAuthorization: () => void;
@@ -16,6 +17,8 @@ type ContextProps = {
   cleanCart: () => void;
   deleteOrder: (id: number) => void;
   updateOrder: (info: OrderInfo) => void;
+  petData: PetInfo[];
+  getPetInfo: (status: Status) => void;
 };
 
 const HomeContext = React.createContext<Partial<ContextProps>>({});

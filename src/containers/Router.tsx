@@ -9,6 +9,8 @@ import { addUserInfo, getUserInfo } from "../redux/actions/user";
 
 const mapStateToProps = (state: AppState) => ({
   authorized: state.loginReducer.authorized,
+  loadingAuth: state.loginReducer.loading,
+  loadingUser: state.userReducer.loading,
 });
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AppActions>) => ({

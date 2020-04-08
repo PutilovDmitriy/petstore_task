@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import Loading from "./Loading";
 
 interface Props {
   goAuthorization: (username: string, password: string) => void;
   getUserInfo: (username: string) => void;
+  loadingAuth: boolean;
+  loadingUser: boolean;
 }
 
 const Login: React.FunctionComponent<Props> = ({
   goAuthorization,
   getUserInfo,
+  loadingAuth,
+  loadingUser,
 }) => {
   const history = useHistory();
   const [username, setUsername] = useState("");
@@ -36,8 +41,9 @@ const Login: React.FunctionComponent<Props> = ({
   const validating = () => {
     username.trim() && password.trim() ? setValid(true) : setValid(false);
   };
-
-  return (
+  return loadingAuth || loadingUser ? (
+    <Loading />
+  ) : (
     <div className="forma">
       <form className="forma" onSubmit={handleSubmit}>
         <input

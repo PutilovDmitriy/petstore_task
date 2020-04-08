@@ -1,6 +1,6 @@
 import { AppActions } from "types/actions";
 import { Pet } from "./../../types/Pet";
-import { PetActions } from "redux/actions/pet";
+import { PetActions } from "../actions/pet";
 
 const initialState: Pet = {
   info: [],
@@ -19,7 +19,7 @@ export default (state = initialState, action: AppActions): Pet => {
     case PetActions.PET_SUCCESS:
       return {
         ...state,
-        loading: true,
+        loading: false,
         info: action.payload,
       };
     case PetActions.PET_FAILURE:

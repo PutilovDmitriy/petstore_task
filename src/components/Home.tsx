@@ -5,6 +5,8 @@ import HomeContext from "../context/HomeContext";
 import { UserInfo } from "../types/User";
 import { OrderInfo } from "../types/Order";
 import { Cart } from "types/Cart";
+import { PetInfo, Status } from "types/Pet";
+import Loading from "./Loading";
 
 interface HomeProps {
   cancelAuthorization: () => void;
@@ -19,6 +21,9 @@ interface HomeProps {
   cleanCart: () => void;
   deleteOrder: (id: number) => void;
   updateOrder: (info: OrderInfo) => void;
+  petData: PetInfo[];
+  getPetInfo: (status: Status) => void;
+  loadingPets: boolean;
 }
 
 const Home: React.FC<HomeProps> = ({
@@ -34,7 +39,13 @@ const Home: React.FC<HomeProps> = ({
   cleanCart,
   deleteOrder,
   updateOrder,
+  petData,
+  getPetInfo,
+  loadingPets,
 }) => {
+  React.useEffect(() => {
+    getPetInfo && getPetInfo("available");
+  }, []);
   return (
     <>
       <HomeContext.Provider
@@ -51,10 +62,11 @@ const Home: React.FC<HomeProps> = ({
           cleanCart,
           deleteOrder,
           updateOrder,
+          petData,
         }}
       >
         <NavBar />
-        <HomeRouter />
+        {loadingPets ? <Loading /> : <HomeRouter />}
       </HomeContext.Provider>
     </>
   );
