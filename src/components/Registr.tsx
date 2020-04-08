@@ -2,7 +2,7 @@ import React, { useState, FormEvent } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { objUserInfo } from "../constants/creaters";
 import { UserInfo } from "../types/User";
-// import Img from "../img/error.png";
+import ImgError from "../../public/imgs/error.png";
 
 interface RegisterProps {
   addUserInfo: (info: UserInfo) => void;
@@ -114,7 +114,7 @@ const Register: React.FunctionComponent<RegisterProps> = ({ addUserInfo }) => {
               onKeyUp={passwordKeyUp}
             ></input>
           </div>
-          <img src="../../public/imgs/error.png" />
+          <img src={ImgError} />
           <h3>Пароли не совпадают</h3>
         </div>
         <input

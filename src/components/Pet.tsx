@@ -1,6 +1,7 @@
 import * as React from "react";
 import CartIcon from "./CartIcon";
 import Carousel from "nuka-carousel";
+import imgDefPet from "../../public/imgs/defaultPet.png";
 
 interface IPetProps {}
 
@@ -14,7 +15,7 @@ const Pet: React.FunctionComponent<IPetProps> = (props) => {
 
   const handleErrorSrc = () => {
     if (!errored) {
-      setSrc(require("../../public/imgs/defaultPet.png"));
+      setSrc(imgDefPet);
       setErrored(true);
     }
   };
