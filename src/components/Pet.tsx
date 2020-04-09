@@ -11,8 +11,6 @@ interface IPetProps {
   info: PetInfo;
   modalOpen: (data: ModalData) => void;
   id: string;
-  cName: string;
-  name: string;
   url: string[];
 }
 
@@ -20,8 +18,6 @@ const Pet: React.FunctionComponent<IPetProps> = ({
   info,
   modalOpen,
   id,
-  cName,
-  name,
   url,
 }) => {
   const [colorIcon, setColorIcon] = React.useState("#ffffff");
@@ -31,8 +27,6 @@ const Pet: React.FunctionComponent<IPetProps> = ({
   const { admin, addEditable } = React.useContext(HomeContext);
 
   React.useEffect(() => {
-    console.log(url);
-
     url.length >= 1 && setUrls([...url]);
   }, [url]);
 
@@ -52,11 +46,15 @@ const Pet: React.FunctionComponent<IPetProps> = ({
   };
 
   const handleClickOrder = () => {
-    if (cName !== undefined && name !== undefined)
+    if (
+      info.category.name !== undefined &&
+      info.name !== undefined &&
+      info !== undefined
+    )
       modalOpen({
         id: id,
-        cName: cName,
-        name: name,
+        cName: info.category.name,
+        name: info.category.name,
         quantity: 0,
       });
   };
@@ -76,15 +74,30 @@ const Pet: React.FunctionComponent<IPetProps> = ({
           },
         }}
       >
-        {urls.map((src) => {
-          return <img src={src} onError={handleErrorSrc} className="imgPet" />;
+        {urls.map((src, index) => {
+          return (
+            <img
+              key={index}
+              src={src}
+              onError={handleErrorSrc}
+              className="imgPet"
+            />
+          );
         })}
       </Carousel>
       <div className="footerPet">
-        <span className="namePet">
-          <h3>{cName}</h3>
-          <h3>{name}</h3>
-        </span>
+        {info !== undefined && info.category !== undefined ? (
+          <span className="namePet">
+            <h3>
+              {info.category.name !== undefined
+                ? info.category.name
+                : "Животное"}
+            </h3>
+            <h3>{info.name !== undefined ? info.name : "Name"}</h3>
+          </span>
+        ) : (
+          <h1>Данные отсутсвуют</h1>
+        )}
         {!admin ? (
           <span
             onClick={handleClickOrder}

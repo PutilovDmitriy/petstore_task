@@ -5,7 +5,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { PetInfo, ModalData } from "../types/Pet";
 import Loading from "./Loading";
 import ModalWindow from "./ModalWindow";
-import { odjOrderInfo, dateFormat } from "../constants/creaters";
+import { odjOrderInfo } from "../constants/creaters";
 import ModalWindowMessage from "./ModalWindowMessage";
 
 const getRandomInt = (): number => {
@@ -118,8 +118,6 @@ const Pets: React.FC<PetsProps> = () => {
                 <Pet
                   key={index}
                   id={data.id}
-                  cName={data.category.name ? data.category.name : "животное"}
-                  name={data.name ? data.name : "имя"}
                   info={data}
                   url={data.photoUrls}
                   modalOpen={modalOpen}
