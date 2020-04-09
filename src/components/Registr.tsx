@@ -157,7 +157,9 @@ const Register: React.FunctionComponent<RegisterProps> = ({ addUserInfo }) => {
           Регистрация
         </button>
       </form>
-      <Link to="/login">Войти</Link>
+      <Link to="/login" className="linkRAL">
+        Войти
+      </Link>
     </div>
   );
 };

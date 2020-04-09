@@ -54,7 +54,7 @@ const Pet: React.FunctionComponent<IPetProps> = ({
       modalOpen({
         id: id,
         cName: info.category.name,
-        name: info.category.name,
+        name: info.name,
         quantity: 0,
       });
   };
@@ -70,7 +70,7 @@ const Pet: React.FunctionComponent<IPetProps> = ({
           nextButtonText: ">",
           prevButtonText: "<",
           pagingDotsStyle: {
-            fill: "red",
+            fill: "#сссссс",
           },
         }}
       >
@@ -96,7 +96,7 @@ const Pet: React.FunctionComponent<IPetProps> = ({
             <h3>{info.name !== undefined ? info.name : "Name"}</h3>
           </span>
         ) : (
-          <h1>Данные отсутсвуют</h1>
+          <h3>Данные отсутсвуют</h3>
         )}
         {!admin ? (
           <span

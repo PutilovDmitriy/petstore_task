@@ -27,13 +27,14 @@ const ModalWindow: React.FunctionComponent<IModalWindowProps> = ({
       <div className="modal">
         <h1>{data.cName}</h1>
         <h2>{data.name}</h2>
+        <label>Количество</label>
         <input
           min={1}
           type="number"
           value={quantity}
           onChange={handleEdit}
           onKeyUp={handleValid}
-          placeholder="Колличество"
+          placeholder="Количество"
         />
         <span className="buttonSaveAndEdit">
           <button

@@ -63,15 +63,17 @@ const Login: React.FunctionComponent<Props> = ({
           value={password}
           onKeyUp={validating}
         />
+        <Link to="/registr" className="linkRAL">
+          Зарегистрироваться
+        </Link>
         <button
           type="submit"
           disabled={!isValid}
           className={isValid ? "validButton" : ""}
         >
-          Log in
+          Войти
         </button>
       </form>
-      <Link to="/registr">Зарегистрироваться</Link>
     </div>
   );
 };

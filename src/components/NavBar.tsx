@@ -17,10 +17,10 @@ const NavBar: React.FunctionComponent<NavBarProps> = ({
   return (
     <nav>
       <div>
-        <Link to={`${url}`}>Home</Link>
+        <Link to={`${url}`}>Главная</Link>
       </div>
       <div>
-        <Link to={`${url}order`}>Order</Link>
+        <Link to={`${url}order`}>Заказы</Link>
       </div>
       <div className="admin">
         <button className={admin ? "on" : ""} onClick={startAdmin}>
@@ -31,7 +31,7 @@ const NavBar: React.FunctionComponent<NavBarProps> = ({
         </button>
       </div>
       <div>
-        <Link to={`${url}profile`}>Profile</Link>
+        <Link to={`${url}profile`}>Профиль</Link>
       </div>
     </nav>
   );

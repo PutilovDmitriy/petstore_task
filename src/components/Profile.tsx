@@ -3,7 +3,7 @@ import HomeContext from "../context/HomeContext";
 
 interface ProfileProps {}
 
-const Profile: React.FunctionComponent<ProfileProps> = (props) => {
+const Profile: React.FunctionComponent<ProfileProps> = () => {
   const { cancelAuthorization, userInfo } = useContext(HomeContext);
 
   const handleLogout = () => {
@@ -13,7 +13,8 @@ const Profile: React.FunctionComponent<ProfileProps> = (props) => {
   return (
     <div className="profile">
       <div>
-        <h1>{`${userInfo?.lastName} ${userInfo?.firstName}`}</h1>
+        <h2>{userInfo?.lastName ? userInfo.lastName : "Иванов"}</h2>
+        <h2>{userInfo?.firstName ? userInfo.firstName : "Иван"}</h2>
       </div>
       <button onClick={handleLogout}>Выйти</button>
     </div>
