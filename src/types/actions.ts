@@ -1,7 +1,7 @@
+import { EditableAction } from "../redux/actions/editablePet";
 import { PetInfo } from "./Pet";
 import { PetActions } from "./../redux/actions/pet";
-import { Cart } from "./Cart";
-import { CartActions } from "../redux/actions/cart";
+import { AdminActions } from "../redux/actions/admin";
 import { OrderInfo } from "./Order";
 import { UserInfo } from "./User";
 import { UserActions } from "./../redux/actions/user";
@@ -99,21 +99,17 @@ export type OrderActionsType =
 
 // cart actions types
 
-export interface AddItem {
-  type: typeof CartActions.ADD_ITEM;
-  payload: Cart;
+export interface StartAdmin {
+  type: typeof AdminActions.ADMIN_START;
 }
 
-export interface RemoveItem {
-  type: typeof CartActions.REMOVE_ITEM;
-  payload: number;
+export interface StopAdmin {
+  type: typeof AdminActions.ADMIN_STOP;
 }
 
-export interface CleanCard {
-  type: typeof CartActions.CLEAN_CART;
-}
+export type AdminActionsType = StartAdmin | StopAdmin;
 
-export type CardActionsType = AddItem | RemoveItem | CleanCard;
+// pet actions types
 
 export interface PetBegin {
   type: typeof PetActions.PET_BEGIN;
@@ -147,9 +143,23 @@ export type PetActionsType =
   | UpdatePet
   | DeletePet;
 
+// editablePet actions types
+
+export interface AddEditable {
+  type: typeof EditableAction.ADD_EDITABLE;
+  payload: PetInfo;
+}
+
+export interface CleanEditable {
+  type: typeof EditableAction.CLEAN_EDITABLE;
+}
+
+export type EditableActionsType = AddEditable | CleanEditable;
+
 export type AppActions =
   | UserActionsType
   | LoginActionsType
   | OrderActionsType
-  | CardActionsType
-  | PetActionsType;
+  | AdminActionsType
+  | PetActionsType
+  | EditableActionsType;

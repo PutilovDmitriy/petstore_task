@@ -4,7 +4,6 @@ import NavBar from "./NavBar";
 import HomeContext from "../context/HomeContext";
 import { UserInfo } from "../types/User";
 import { OrderInfo } from "../types/Order";
-import { Cart } from "types/Cart";
 import { PetInfo, Status } from "types/Pet";
 import Loading from "./Loading";
 
@@ -15,15 +14,18 @@ interface HomeProps {
   orderInfo: OrderInfo | null;
   loadingOrder: boolean;
   errorOrder: any;
-  cartData: Cart[];
-  addCart: (payload: Cart) => void;
-  removeCart: (payload: number) => void;
-  cleanCart: () => void;
   deleteOrder: (id: number) => void;
+  addOrder: (info: OrderInfo) => void;
   updateOrder: (info: OrderInfo) => void;
   petData: PetInfo[];
   getPetInfo: (status: Status) => void;
   loadingPets: boolean;
+  admin: boolean;
+  startAdmin: () => void;
+  stopAdmin: () => void;
+  editablePet: PetInfo;
+  addEditable: (payload: PetInfo) => void;
+  cleanEditable: () => void;
 }
 
 const Home: React.FC<HomeProps> = ({
@@ -33,15 +35,18 @@ const Home: React.FC<HomeProps> = ({
   orderInfo,
   loadingOrder,
   errorOrder,
-  cartData,
-  addCart,
-  removeCart,
-  cleanCart,
+  addOrder,
   deleteOrder,
   updateOrder,
   petData,
   getPetInfo,
   loadingPets,
+  admin,
+  startAdmin,
+  stopAdmin,
+  editablePet,
+  addEditable,
+  cleanEditable,
 }) => {
   React.useEffect(() => {
     getPetInfo && getPetInfo("available");
@@ -56,17 +61,18 @@ const Home: React.FC<HomeProps> = ({
           orderInfo,
           loadingOrder,
           errorOrder,
-          cartData,
-          addCart,
-          removeCart,
-          cleanCart,
           deleteOrder,
+          addOrder,
           updateOrder,
           petData,
+          admin,
+          editablePet,
+          addEditable,
+          cleanEditable,
         }}
       >
-        <NavBar />
-        {loadingPets ? <Loading /> : <HomeRouter />}
+        <NavBar admin={admin} startAdmin={startAdmin} stopAdmin={stopAdmin} />
+        {loadingPets ? <Loading /> : <HomeRouter admin={admin} />}
       </HomeContext.Provider>
     </>
   );

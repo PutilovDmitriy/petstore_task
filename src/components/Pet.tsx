@@ -1,26 +1,70 @@
 import * as React from "react";
 import CartIcon from "./CartIcon";
+import EditIcon from "./EditIcon";
 import Carousel from "nuka-carousel";
 import imgDefPet from "../../public/imgs/defaultPet.png";
+import { ModalData, PetInfo } from "../types/Pet";
+import HomeContext from "../context/HomeContext";
+import { Link } from "react-router-dom";
 
-interface IPetProps {}
+interface IPetProps {
+  info: PetInfo;
+  modalOpen: (data: ModalData) => void;
+  id: string;
+  cName: string;
+  name: string;
+  url: string[];
+}
 
-const Pet: React.FunctionComponent<IPetProps> = (props) => {
+const Pet: React.FunctionComponent<IPetProps> = ({
+  info,
+  modalOpen,
+  id,
+  cName,
+  name,
+  url,
+}) => {
   const [colorIcon, setColorIcon] = React.useState("#ffffff");
   const [errored, setErrored] = React.useState(false);
-  const [src, setSrc] = React.useState("");
+  const [urls, setUrls] = React.useState<string[]>(["def"]);
+
+  const { admin, addEditable } = React.useContext(HomeContext);
+
+  React.useEffect(() => {
+    console.log(url);
+
+    url.length >= 1 && setUrls([...url]);
+  }, [url]);
 
   const downColor = () => setColorIcon("#ff1744");
   const upColor = () => setColorIcon("#ffffff");
 
   const handleErrorSrc = () => {
-    if (!errored) {
-      setSrc(imgDefPet);
+    if (urls.length > 1) {
+      setUrls([...urls.slice(1)]);
+    }
+    if (urls.length == 1 && !errored) {
+      console.log("длинна один");
+
+      setUrls([imgDefPet]);
       setErrored(true);
     }
   };
 
-  const handleClick = () => {};
+  const handleClickOrder = () => {
+    if (cName !== undefined && name !== undefined)
+      modalOpen({
+        id: id,
+        cName: cName,
+        name: name,
+        quantity: 0,
+      });
+  };
+
+  const handleClickEdit = () => {
+    addEditable && addEditable(info);
+  };
+
   return (
     <div className="pet">
       <Carousel
@@ -32,13 +76,28 @@ const Pet: React.FunctionComponent<IPetProps> = (props) => {
           },
         }}
       >
-        <img src={src} onError={handleErrorSrc} className="imgPet" />
+        {urls.map((src) => {
+          return <img src={src} onError={handleErrorSrc} className="imgPet" />;
+        })}
       </Carousel>
       <div className="footerPet">
-        <h3>Животное</h3>
-        <span onMouseDown={downColor} onMouseUp={upColor}>
-          <CartIcon color={colorIcon} />
+        <span className="namePet">
+          <h3>{cName}</h3>
+          <h3>{name}</h3>
         </span>
+        {!admin ? (
+          <span
+            onClick={handleClickOrder}
+            onMouseDown={downColor}
+            onMouseUp={upColor}
+          >
+            <CartIcon color={colorIcon} />
+          </span>
+        ) : (
+          <Link to="/edit" onClick={handleClickEdit}>
+            <EditIcon color={colorIcon} />
+          </Link>
+        )}
       </div>
     </div>
   );

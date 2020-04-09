@@ -9,6 +9,7 @@ body,
 a {
   color: #000;
   text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 a:hover {
   text-decoration: underline;
@@ -102,10 +103,6 @@ nav {
     padding: 0;
     background-color: #333;
   }
-  .home {
-    flex: 2;
-  }
-
   a {
     display: block;
     color: white;
@@ -115,6 +112,17 @@ nav {
   }
   a:hover {
     background-color: #111;
+  }
+  .admin {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .on {
+    background-color: #64dd17;
+  }
+  .off {
+    background-color: #d50000;
   }
 }
 
@@ -219,6 +227,7 @@ nav {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  overflow-y: hidden;
 }
 .petsBlock {
   display: flex;
@@ -240,7 +249,7 @@ nav {
   justify-content: center;
   align-items: stretch;
   flex-direction: column;
-  max-height: 300px;
+  max-height: 330px;
   width: 250px;
   margin: 20px;
   border-radius: 10px;
@@ -253,8 +262,25 @@ nav {
   background-color: #4a148c;
   color: white;
   padding: 0 5px 0 10px;
+  height: 60px;
   img {
     height: 30px;
+  }
+  span {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    max-width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 5px;
+    text-overflow: ellipsis;
+    margin: 0;
   }
 }
 
@@ -263,4 +289,61 @@ nav {
   height: 250px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+}
+
+.modalOverlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999999;
+  opacity: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
+  animation: show 0.5s ease;
+}
+@keyframes show {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  1% {
+    display: flex;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  height: 300px;
+  border-radius: 5%;
+  background-color: #ffffff;
+  span {
+    width: 60%;
+  }
+  button {
+    height: 40px;
+  }
+}
+
+.modalMessage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 200px;
+  border-radius: 10%;
+  background-color: #ffffff;
 }

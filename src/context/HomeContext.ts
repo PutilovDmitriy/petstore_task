@@ -1,7 +1,6 @@
 import { UserInfo } from "./../types/User";
 import * as React from "react";
 import { OrderInfo } from "types/Order";
-import { Cart } from "../types/Cart";
 import { PetInfo, Status } from "../types/Pet";
 
 type ContextProps = {
@@ -11,14 +10,17 @@ type ContextProps = {
   orderInfo: OrderInfo | null;
   loadingOrder: boolean;
   errorOrder: any;
-  cartData: Cart[];
-  addCart: (payload: Cart) => void;
-  removeCart: (payload: number) => void;
-  cleanCart: () => void;
   deleteOrder: (id: number) => void;
+  addOrder: (info: OrderInfo) => void;
   updateOrder: (info: OrderInfo) => void;
   petData: PetInfo[];
   getPetInfo: (status: Status) => void;
+  admin: boolean;
+  startAdmin: () => void;
+  stopAdmin: () => void;
+  editablePet: PetInfo;
+  addEditable: (payload: PetInfo) => void;
+  cleanEditable: () => void;
 };
 
 const HomeContext = React.createContext<Partial<ContextProps>>({});

@@ -13,6 +13,13 @@ export interface PetInfo {
   status: Status;
 }
 
+export interface ModalData {
+  id: string;
+  cName: string;
+  name: string;
+  quantity: number;
+}
+
 export type Status = "available" | "pending" | "sold";
 
 interface Category {

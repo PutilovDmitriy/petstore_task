@@ -8,7 +8,6 @@ const Home = React.lazy(() => import("../containers/Home"));
 const Register = React.lazy(() => import("../components/Registr"));
 
 interface RouterProps {
-  userInfo: UserInfo;
   authorized: boolean;
   addUserInfo: (info: UserInfo) => void;
   goAuthorization: (username: string, password: string) => void;
