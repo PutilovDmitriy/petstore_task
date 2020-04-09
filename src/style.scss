@@ -27,12 +27,16 @@ a:hover {
   justify-content: center;
   align-items: center;
 }
+
+.buttonRAL {
+  width: calc(100% - 10px);
+}
 .passwordForm {
   width: 260px;
 }
 
 .linkRAL {
-  margin: 7px;
+  margin: 10px;
 }
 
 .validPassword {

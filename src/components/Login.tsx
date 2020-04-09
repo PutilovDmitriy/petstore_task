@@ -69,7 +69,7 @@ const Login: React.FunctionComponent<Props> = ({
         <button
           type="submit"
           disabled={!isValid}
-          className={isValid ? "validButton" : ""}
+          className={isValid ? "validButton buttonRAL" : "buttonRAL"}
         >
           Войти
         </button>

@@ -152,7 +152,7 @@ const Register: React.FunctionComponent<RegisterProps> = ({ addUserInfo }) => {
         <button
           type="submit"
           disabled={!isValid}
-          className={isValid ? "validButton" : ""}
+          className={isValid ? "validButton buttonRAL" : "buttonRAL"}
         >
           Регистрация
         </button>
