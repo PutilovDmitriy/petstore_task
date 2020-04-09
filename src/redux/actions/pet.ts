@@ -45,13 +45,17 @@ export function getPetInfo(status: Status) {
   return (dispatch: Dispatch<AppActions>) => {
     dispatch(petBegin());
     return fetch(`${urlPetByStatus}${status}`)
-      .then(
-        (response) => response.json(),
-        (error) => dispatch(petFailure(error))
-      )
-      .then((data) => {
-        dispatch(petSuccess(data));
-        return data;
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          dispatch(petFailure(401));
+          return null;
+        }
+      })
+      .then((res) => {
+        if (res !== null) dispatch(petSuccess(res));
+        return res;
       });
   };
 }
@@ -66,12 +70,17 @@ export function addPetInfo(info: PetInfo) {
       },
       body: JSON.stringify(info),
     })
-      .then(
-        (response) => response.json(),
-        (error) => dispatch(petFailure(error))
-      )
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          dispatch(petFailure(402));
+          return null;
+        }
+      })
       .then((res) => {
-        res.code == 200 && addPet(info);
+        if (res !== null) dispatch(addPet(res));
+        return res;
       });
   };
 }
@@ -86,28 +95,38 @@ export function updatePetInfo(info: PetInfo) {
       },
       body: JSON.stringify(info),
     })
-      .then(
-        (response) => response.json(),
-        (error) => dispatch(petFailure(error))
-      )
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          dispatch(petFailure(403));
+          return null;
+        }
+      })
       .then((res) => {
-        res.code == 200 && dispatch(updatePet(info));
+        if (res !== null) dispatch(updatePet(res));
+        return res;
       });
   };
 }
 
-export function deletepPet(petId: string) {
+export function deletePetInfo(petId: string) {
   return (dispatch: Dispatch<AppActions>) => {
     dispatch(petBegin());
     return fetch(`${urlPet}${petId}`, {
       method: "DELETE",
     })
-      .then(
-        (response) => response.json(),
-        (error) => dispatch(petFailure(error))
-      )
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          dispatch(petFailure(404));
+          return null;
+        }
+      })
       .then((res) => {
-        res.code == 200 && dispatch(deletePet(petId));
+        if (res !== null) dispatch(deletePet(petId));
+        return res;
       });
   };
 }

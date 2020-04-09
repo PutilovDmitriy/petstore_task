@@ -3,6 +3,7 @@ import { Route, useRouteMatch, Redirect } from "react-router-dom";
 import Profile from "../components/Profile";
 import Orders from "../components/Orders";
 import Pets from "../components/Pets";
+import PetPage from "../components/PetPage";
 
 interface HomeRouterProps {
   admin: boolean;
@@ -20,7 +21,7 @@ const HomeRouter: React.FC<HomeRouterProps> = ({ admin }) => {
         <Orders />
       </Route>
       <Route path={`${path}edit`}>
-        {admin ? <h1>petedit</h1> : <Redirect to={`${path}`} />}
+        {admin ? <PetPage /> : <Redirect to={`${path}`} />}
       </Route>
       <Route path={`${path}profile`}>
         <Profile />

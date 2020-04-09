@@ -11,7 +11,13 @@ import {
   updateOrderInfo,
   addOrderInfo,
 } from "../redux/actions/order";
-import { getPetInfo } from "../redux/actions/pet";
+import {
+  getPetInfo,
+  addPetInfo,
+  updatePetInfo,
+  deletePetInfo,
+  petFailure,
+} from "../redux/actions/pet";
 import { startAdmin, stopAdmin } from "../redux/actions/admin";
 import { addEditable, cleanEditable } from "../redux/actions/editablePet";
 
@@ -24,6 +30,7 @@ const mapStateToProps = (state: AppState) => ({
   loadingPets: state.petReducer.loading,
   admin: state.adminReducer,
   editablePet: state.editablePetReducer,
+  errorPet: state.petReducer.error,
 });
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AppActions>) => ({
@@ -37,5 +44,9 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AppActions>) => ({
   stopAdmin: bindActionCreators(stopAdmin, dispatch),
   addEditable: bindActionCreators(addEditable, dispatch),
   cleanEditable: bindActionCreators(cleanEditable, dispatch),
+  addPet: bindActionCreators(addPetInfo, dispatch),
+  updatePet: bindActionCreators(updatePetInfo, dispatch),
+  deletePet: bindActionCreators(deletePetInfo, dispatch),
+  petFailure: bindActionCreators(petFailure, dispatch),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

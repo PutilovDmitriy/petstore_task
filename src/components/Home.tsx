@@ -6,6 +6,7 @@ import { UserInfo } from "../types/User";
 import { OrderInfo } from "../types/Order";
 import { PetInfo, Status } from "types/Pet";
 import Loading from "./Loading";
+import ModalWindowMessage from "./ModalWindowMessage";
 
 interface HomeProps {
   cancelAuthorization: () => void;
@@ -26,6 +27,11 @@ interface HomeProps {
   editablePet: PetInfo;
   addEditable: (payload: PetInfo) => void;
   cleanEditable: () => void;
+  addPet: (info: PetInfo) => void;
+  updatePet: (info: PetInfo) => void;
+  deletePet: (petId: string) => void;
+  errorPet: any;
+  petFailure: (payload: any) => void;
 }
 
 const Home: React.FC<HomeProps> = ({
@@ -47,10 +53,22 @@ const Home: React.FC<HomeProps> = ({
   editablePet,
   addEditable,
   cleanEditable,
+  addPet,
+  deletePet,
+  updatePet,
+  errorPet,
+  petFailure,
 }) => {
   React.useEffect(() => {
     getPetInfo && getPetInfo("available");
   }, []);
+
+  if (errorPet !== null) {
+    setTimeout(() => {
+      petFailure(null);
+    }, 4000);
+  }
+
   return (
     <>
       <HomeContext.Provider
@@ -69,10 +87,20 @@ const Home: React.FC<HomeProps> = ({
           editablePet,
           addEditable,
           cleanEditable,
+          addPet,
+          deletePet,
+          updatePet,
         }}
       >
         <NavBar admin={admin} startAdmin={startAdmin} stopAdmin={stopAdmin} />
         {loadingPets ? <Loading /> : <HomeRouter admin={admin} />}
+        {errorPet == 402 ? (
+          <ModalWindowMessage text="Добавление не удалось" />
+        ) : errorPet == 403 ? (
+          <ModalWindowMessage text="Изненение не удалось" />
+        ) : errorPet == 404 ? (
+          <ModalWindowMessage text="Удаление не удалось" />
+        ) : null}
       </HomeContext.Provider>
     </>
   );

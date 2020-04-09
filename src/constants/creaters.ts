@@ -1,3 +1,4 @@
+import { Category, Status, Tags } from "./../types/Pet";
 import { OrderInfo } from "./../types/Order";
 import { UserStatus, UserInfo } from "./../types/User";
 
@@ -38,3 +39,24 @@ export const odjOrderInfo = (
   status: status,
   complete: complete,
 });
+
+export const objPetInfo = (
+  id: string,
+  category: string,
+  name: string,
+  photoUrls: string[],
+  tags: string[],
+  status: Status
+) => {
+  let tgs: Tags[] = [];
+  if (tags.length !== 0)
+    tags.map((item, index) => (tgs = [...tgs, { id: index, name: item }]));
+  return {
+    id: id,
+    category: { id: 1, name: category },
+    name: name,
+    photoUrls: photoUrls,
+    tags: tgs,
+    status: status,
+  };
+};

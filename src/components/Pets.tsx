@@ -138,7 +138,10 @@ const Pets: React.FC<PetsProps> = () => {
         />
       )}
       {showMessage && (
-        <ModalWindowMessage text={`Номер вашего заказа ${numberOrder}`} />
+        <ModalWindowMessage
+          text={`Номер вашего заказа ${numberOrder}`}
+          order={true}
+        />
       )}
     </>
   );

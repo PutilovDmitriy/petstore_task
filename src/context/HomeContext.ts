@@ -21,6 +21,9 @@ type ContextProps = {
   editablePet: PetInfo;
   addEditable: (payload: PetInfo) => void;
   cleanEditable: () => void;
+  addPet: (info: PetInfo) => void;
+  updatePet: (info: PetInfo) => void;
+  deletePet: (petId: string) => void;
 };
 
 const HomeContext = React.createContext<Partial<ContextProps>>({});

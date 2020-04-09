@@ -1,3 +1,6 @@
+$gren-color: #64dd17;
+$remove-color: #d50000;
+
 html {
   height: calc(101% - 50px);
 }
@@ -129,10 +132,10 @@ nav {
     align-items: center;
   }
   .on {
-    background-color: #64dd17;
+    background-color: $gren-color;
   }
   .off {
-    background-color: #d50000;
+    background-color: $remove-color;
   }
 }
 
@@ -202,11 +205,11 @@ nav {
   align-items: center;
   .compliteOrder {
     margin-right: 10px;
-    background-color: #64dd17;
+    background-color: $gren-color;
   }
   .uncompliteOrder {
     margin-left: 10px;
-    background-color: #d50000;
+    background-color: $remove-color;
   }
 }
 

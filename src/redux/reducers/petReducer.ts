@@ -27,7 +27,6 @@ export default (state = initialState, action: AppActions): Pet => {
         ...state,
         loading: false,
         error: action.payload,
-        info: initialState.info,
       };
     case PetActions.ADD_PET:
       return {

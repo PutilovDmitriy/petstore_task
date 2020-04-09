@@ -8,7 +8,7 @@ import { Status } from "types/Order";
 
 interface OrdersProps {}
 
-const Orders: React.FunctionComponent<OrdersProps> = (props) => {
+const Orders: React.FunctionComponent<OrdersProps> = () => {
   const {
     getOrder,
     orderInfo,
@@ -88,7 +88,9 @@ const Orders: React.FunctionComponent<OrdersProps> = (props) => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     getOrder && getOrder(orderId);
     event.preventDefault();
+    offEditMode();
   };
+
   const handleUpdate = () => {
     if (
       updateOrder &&

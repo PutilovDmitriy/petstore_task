@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { Store } from "./redux/store";
 import "./style.scss";
+import "./petStyles.scss";
 import App from "./App";
 
 ReactDOM.render(

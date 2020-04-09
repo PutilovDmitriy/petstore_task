@@ -5,7 +5,7 @@ import Carousel from "nuka-carousel";
 import imgDefPet from "../../public/imgs/defaultPet.png";
 import { ModalData, PetInfo } from "../types/Pet";
 import HomeContext from "../context/HomeContext";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 interface IPetProps {
   info: PetInfo;
@@ -23,6 +23,7 @@ const Pet: React.FunctionComponent<IPetProps> = ({
   const [colorIcon, setColorIcon] = React.useState("#ffffff");
   const [errored, setErrored] = React.useState(false);
   const [urls, setUrls] = React.useState<string[]>(["def"]);
+  const history = useHistory();
 
   const { admin, addEditable } = React.useContext(HomeContext);
 
@@ -38,8 +39,6 @@ const Pet: React.FunctionComponent<IPetProps> = ({
       setUrls([...urls.slice(1)]);
     }
     if (urls.length == 1 && !errored) {
-      console.log("длинна один");
-
       setUrls([imgDefPet]);
       setErrored(true);
     }
@@ -61,6 +60,7 @@ const Pet: React.FunctionComponent<IPetProps> = ({
 
   const handleClickEdit = () => {
     addEditable && addEditable(info);
+    history.push("/edit");
   };
 
   return (
@@ -107,9 +107,13 @@ const Pet: React.FunctionComponent<IPetProps> = ({
             <CartIcon color={colorIcon} />
           </span>
         ) : (
-          <Link to="/edit" onClick={handleClickEdit}>
+          <span
+            onClick={handleClickEdit}
+            onMouseDown={downColor}
+            onMouseUp={upColor}
+          >
             <EditIcon color={colorIcon} />
-          </Link>
+          </span>
         )}
       </div>
     </div>

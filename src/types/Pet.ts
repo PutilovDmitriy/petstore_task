@@ -22,12 +22,12 @@ export interface ModalData {
 
 export type Status = "available" | "pending" | "sold";
 
-interface Category {
+export interface Category {
   id: number;
   name: string;
 }
 
-interface Tags {
+export interface Tags {
   id: number;
   name: string;
 }
