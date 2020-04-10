@@ -27,7 +27,7 @@ const ModalWindow: React.FunctionComponent<IModalWindowProps> = ({
       <div className="modal">
         <span className="textRow">
           <h1>Категория:&nbsp;</h1>
-          <h1>{data.cName}</h1>
+          <h2 className="cName">{data.cName}</h2>
         </span>
         <span className="textRow">
           <h2>Имя питомца:&nbsp;</h2>
