@@ -45,6 +45,7 @@ const Login: React.FunctionComponent<Props> = ({
     <Loading />
   ) : (
     <div className="forma">
+      <h1>Зоомагазин</h1>
       <form className="forma" onSubmit={handleSubmit}>
         <input
           type="text"
