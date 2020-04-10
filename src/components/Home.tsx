@@ -64,6 +64,8 @@ const Home: React.FC<HomeProps> = ({
   }, []);
 
   if (errorPet !== null) {
+    console.log("eeror null");
+
     setTimeout(() => {
       petFailure(null);
     }, 4000);
