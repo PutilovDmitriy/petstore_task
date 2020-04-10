@@ -5,7 +5,7 @@ export interface Pet {
 }
 
 export interface PetInfo {
-  id: string;
+  id: number;
   category: Category;
   name: string;
   photoUrls: string[];

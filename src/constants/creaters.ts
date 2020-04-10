@@ -41,7 +41,7 @@ export const odjOrderInfo = (
 });
 
 export const objPetInfo = (
-  id: string,
+  id: number | string,
   category: string,
   name: string,
   photoUrls: string[],
@@ -52,7 +52,7 @@ export const objPetInfo = (
   if (tags.length !== 0)
     tags.map((item, index) => (tgs = [...tgs, { id: index, name: item }]));
   return {
-    id: id,
+    id: Number(id),
     category: { id: 1, name: category },
     name: name,
     photoUrls: photoUrls,

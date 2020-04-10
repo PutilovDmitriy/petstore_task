@@ -22,7 +22,7 @@ const PetPage: React.FC = () => {
 
   React.useEffect(() => {
     if (editablePet !== undefined && !addMode) {
-      setPetId(editablePet?.id);
+      setPetId(String(editablePet?.id));
       setCategory(editablePet.category.name);
       setName(editablePet.name);
       setUrls(editablePet.photoUrls);
@@ -34,11 +34,11 @@ const PetPage: React.FC = () => {
   }, [addMode]);
 
   const selectedTags = (newTags: string[]) => {
-    setUrls(newTags);
+    setTags(newTags);
   };
 
   const selectedUrls = (photoUrls: string[]) => {
-    setTags(photoUrls);
+    setUrls(photoUrls);
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -67,14 +67,14 @@ const PetPage: React.FC = () => {
         updatePet(objPetInfo(petId, category, name, urls, tags, status));
     }
     if (addMode) {
-      addPet && addPet(objPetInfo(petId, category, name, urls, tags, status));
+      addPet && addPet(objPetInfo(0, category, name, urls, tags, status));
     }
     history.push("/");
   };
 
   const onMode = () => {
     setAddMode(true);
-    setPetId("----");
+    setPetId("Создается");
     setCategory("");
     setName("");
     setUrls([]);
@@ -102,8 +102,7 @@ const PetPage: React.FC = () => {
   return (
     <div className="petInfo">
       <h1>Редактирование питомца: </h1>
-      <h1>{name}</h1>
-      <label>Код питомца: {petId}</label>
+      <h1>{!addMode ? name : "Новый"}</h1>:<label>Код питомца: {petId}</label>
       <label>
         <span>Категория</span>
         <input
@@ -126,18 +125,15 @@ const PetPage: React.FC = () => {
           onKeyUp={handleValid}
         ></input>
       </label>
-
       <label>
         <span>Фотографии (url)</span>
         <Tags selectedTags={selectedUrls} initTags={urls} />
       </label>
-
       <label>
         <span>Теги</span>
 
         <Tags selectedTags={selectedTags} initTags={tags} />
       </label>
-
       <label>
         <span>Статус</span>
 

@@ -13,7 +13,7 @@ const ModalWindowMessage: React.FunctionComponent<IModalWindowMessageProps> = ({
     <div className="modalOverlay">
       <div className="modalMessage">
         <h1>{text}</h1>
-        {order && <h2>Отследить ваш заказ можнно во вкладке "Заказ"</h2>}
+        {order && <h2>Отследить ваш заказ можно во вкладке "Заказ"</h2>}
       </div>
     </div>
   );

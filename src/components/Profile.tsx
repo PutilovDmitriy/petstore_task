@@ -12,10 +12,8 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
 
   return (
     <div className="profile">
-      <div>
-        <h2>{userInfo?.lastName ? userInfo.lastName : "Иванов"}</h2>
-        <h2>{userInfo?.firstName ? userInfo.firstName : "Иван"}</h2>
-      </div>
+      <h2>{userInfo?.lastName ? userInfo.lastName : "Без фамилии"}</h2>
+      <h2>{userInfo?.firstName ? userInfo.firstName : "Без имени"}</h2>
       <button onClick={handleLogout}>Выйти</button>
     </div>
   );

@@ -108,7 +108,7 @@ const Pets: React.FC<PetsProps> = () => {
           loader={<Loading />}
           endMessage={
             <p style={{ textAlign: "center" }}>
-              <b>Yay! You have seen it all</b>
+              <b>"Вау, вы посмотрели всех питомцев"</b>
             </p>
           }
         >
@@ -117,7 +117,7 @@ const Pets: React.FC<PetsProps> = () => {
               data.map((data, index) => (
                 <Pet
                   key={index}
-                  id={data.id}
+                  id={String(data.id)}
                   info={data}
                   url={data.photoUrls}
                   modalOpen={modalOpen}

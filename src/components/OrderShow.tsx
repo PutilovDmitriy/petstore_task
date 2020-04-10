@@ -25,7 +25,7 @@ const ShowOrder: React.FunctionComponent<ShowOrderProps> = ({
         <p>{dateFormat(orderInfo?.shipDate, "dd.mm.yy")}</p>
       </span>
       <span className="textRow">
-        <h2>Колличество: &nbsp;</h2>
+        <h2>Количество: &nbsp;</h2>
         <p>{orderInfo?.quantity}</p>
       </span>
       <span className="textRow">

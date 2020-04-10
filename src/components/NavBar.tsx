@@ -24,10 +24,10 @@ const NavBar: React.FunctionComponent<NavBarProps> = ({
       </div>
       <div className="admin">
         <button className={admin ? "on" : ""} onClick={startAdmin}>
-          on Admin
+          Режим администратора
         </button>
         <button className={!admin ? "off" : ""} onClick={stopAdmin}>
-          off Admin
+          Режим покупателя
         </button>
       </div>
       <div>

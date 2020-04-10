@@ -120,7 +120,7 @@ const Orders: React.FunctionComponent<OrdersProps> = () => {
           <input
             name="search"
             type="text"
-            placeholder="Номер заказа"
+            placeholder="Введите номер заказа"
             value={orderId ? orderId : ""}
             onChange={handleChange}
           ></input>

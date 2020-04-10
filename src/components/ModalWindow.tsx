@@ -25,8 +25,14 @@ const ModalWindow: React.FunctionComponent<IModalWindowProps> = ({
   return data !== null ? (
     <div className="modalOverlay">
       <div className="modal">
-        <h1>{data.cName}</h1>
-        <h2>{data.name}</h2>
+        <span className="textRow">
+          <h1>Категория:&nbsp;</h1>
+          <h1>{data.cName}</h1>
+        </span>
+        <span className="textRow">
+          <h2>Имя питомца:&nbsp;</h2>
+          <h2>{data.name}</h2>
+        </span>
         <label>Количество</label>
         <input
           min={1}

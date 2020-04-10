@@ -131,6 +131,11 @@ nav {
     justify-content: space-evenly;
     align-items: center;
   }
+  button {
+    height: 50px;
+    max-width: 170px;
+    padding-bottom: 5px;
+  }
   .on {
     background-color: $gren-color;
   }
@@ -367,4 +372,9 @@ nav {
   h2 {
     text-align: center;
   }
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
 }
