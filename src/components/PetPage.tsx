@@ -23,7 +23,9 @@ const PetPage: React.FC = () => {
   React.useEffect(() => {
     if (editablePet !== undefined && !addMode) {
       setPetId(String(editablePet?.id));
-      setCategory(editablePet.category.name);
+      if (editablePet.category !== undefined) {
+        setCategory(editablePet.category.name);
+      } else setValid(false);
       setName(editablePet.name);
       setUrls(editablePet.photoUrls);
       editablePet.tags.map((item) => {

@@ -24,7 +24,7 @@ const NavBar: React.FunctionComponent<NavBarProps> = ({
       </div>
       <div className="admin">
         <button className={admin ? "on" : ""} onClick={startAdmin}>
-          Режим администратора
+          Режим admin
         </button>
         <button className={!admin ? "off" : ""} onClick={stopAdmin}>
           Режим покупателя

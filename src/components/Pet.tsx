@@ -86,13 +86,15 @@ const Pet: React.FunctionComponent<IPetProps> = ({
         })}
       </Carousel>
       <div className="footerPet">
-        {info !== undefined && info.category !== undefined ? (
+        {info !== undefined ? (
           <span className="namePet">
-            <h3>
-              {info.category.name !== undefined
-                ? info.category.name
-                : "Животное"}
-            </h3>
+            {info.category !== undefined && (
+              <h3>
+                {info.category.name !== undefined
+                  ? info.category.name
+                  : "Животное"}
+              </h3>
+            )}
             <h3>{info.name !== undefined ? info.name : "Name"}</h3>
           </span>
         ) : (
